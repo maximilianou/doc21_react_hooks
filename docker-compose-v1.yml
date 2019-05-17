@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  v1_hooks: 
+    container_name: v1_hooks 
+    build: 
+      context: ./v1_hooks/.
+      dockerfile: Dockerfile 
+    volumes:
+      - './v1_hooks:/opt/app'
+      - './v1_hooks/node_modules:/opt/app/node_modules'
+    ports:
+      - '10000:3000'
+    environment:
+      - NODE_ENV=development
+
