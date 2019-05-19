@@ -11,5 +11,6 @@ pipelines:
         caches:
           - node
         script: # Modify the commands below to build your repository.
-          - ./v1_hooks/npm install
-          - ./v1_hooks/npm test
+          - cd v1_hooks 
+          - npm install
+          - npm run test
