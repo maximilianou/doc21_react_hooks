@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+const initialState = 
+    [{ id: 101, name:"Banana", price: 40},
+               { id: 102, name:"Watermelon", price: 60},
+               { id: 103, name:"Pineapple", price: 80}];
+
+const ProductLi = ( { prod } ) => {
+  return(
+      <li className='product' ><span>{prod.name}</span><strong>{prod.price}</strong></li>
+  );
+};
 
 const ProductsList = () => {
+  const [products, setProducts] = useState( initialState );
   return(
     <ul>
-      <li className='product'><span>Banana</span><strong>50</strong></li>
-      <li className='product'><span>Watermelon</span><strong>70</strong></li>
-      <li className='product'><span>Pineapple</span><strong>80</strong></li>
+      { products.map(  prod  =>
+                                <ProductLi key={prod.id} prod={prod} />) }
     </ul>
   );
 };
 
 export default ProductsList;
+
+
