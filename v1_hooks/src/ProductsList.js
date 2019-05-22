@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const initialState = 
     [{ id: 101, name:"Banana", price: 40},
@@ -11,10 +11,23 @@ const ProductLi = ( { prod } ) => {
   );
 };
 
+const useConsole = (times) => {
+  useEffect( () => {
+    console.log("Effect Call: "+ times);
+  });
+}
+
+let renderTimes = 1000;
 const ProductsList = () => {
   const [products, setProducts] = useState( initialState );
+  console.log("Render Times: "+ renderTimes++);
+  useConsole(renderTimes); 
+
+  const handlePlus = () => {
+    setProducts(  [ ...products, { id: renderTimes, name: "Lemon", price: 20} ]); 
+  };
   return(
-    <ul>
+    <ul onClick={handlePlus}>
       { products.map(  prod  =>
                                 <ProductLi key={prod.id} prod={prod} />) }
     </ul>

@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+ - "node"
+install:
+  - cd v1_hooks && npm install
+script:
+  - npm test
